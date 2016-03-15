@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  sitemesh 설정 부분 입니다.
+  해당 주석을 참조하여 설정 해 주시기 바랍니다.
+
+  @author baiaba
+-->
+<decorators defaultdir="/WEB-INF/decorators/">
+
+  <!--
+    =========================================================
+    제외 되어야하는 url
+    =========================================================
+  -->
+  <excludes>
+  	<pattern>/community/imageUpload*</pattern>
+  </excludes>
+  
+  <excludes>
+  	<pattern>/resources/*html</pattern>
+  </excludes>
+
+  <!--
+    =========================================================
+    기본 default 레이아웃과 패턴
+    =========================================================
+  -->
+
+  <decorator name="default" page="default/defaultLayout.jsp">
+    <pattern>*</pattern>
+  </decorator>
+  
+  <!--
+  <decorator name="dashboard" page="empty/emptyLayout.jsp">
+    <pattern>/dashboard/dashboardMain</pattern>
+  </decorator>
+  -->
+  
+  <decorator name="login" page="empty/emptyLayout.jsp">
+    <pattern>/user/login</pattern>
+  </decorator>
+  
+  <!--
+  http://localhost:8080/resources/SmartEditor2/SmartEditor2Skin.html
+  <decorator name="empty" page="empty/emptyLayout.jsp">
+    <pattern>/*/*Iframe</pattern>
+  </decorator>
+
+  <decorator name="empty" page="empty/emptyLayout.jsp">
+    <pattern>/*/*Iframe/*</pattern>
+  </decorator>
+  -->
+
+  <!--
+    =========================================================
+
+            여기서 부터는 default 가 아닌 경우를 지정해 주세요.
+
+    =========================================================
+  -->
+
+  <!--
+    =========================================================
+    게시판은 default 설정이 아닌 지정된 레이아웃을 따르게 함
+    =========================================================
+  -->
+  <!--
+  <decorator name="anotherPage" page="another/anotherLayout.jsp">
+    <pattern>/board/*</pattern>
+  </decorator>
+  -->
+
+</decorators>

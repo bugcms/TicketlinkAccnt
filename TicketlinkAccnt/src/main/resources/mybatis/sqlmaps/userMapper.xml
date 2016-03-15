@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.ticketlink.user.service.UserService"><!-- namespace에서 interface로 정의된 DAO를 정확히 명시해주어야 한다 -->
+	<select id="getUserId" parameterType="string" resultType="kr.co.ticketlink.user.domain.User">
+	    SELECT 
+			id,
+		    password,
+		    name,
+		    nickname,
+		    email,
+		    phoneNumber,
+		    gender,
+		    level,
+		    emailReceiveYn,
+		    smsReceiveYn,
+		    provisionYn,
+		    emailCheckYn,
+		    emailCheckKey,
+		    registerDate,
+		    updateDate,
+		    secessionYn
+		FROM
+			USER
+		WHERE
+			id = #{id}
+	</select>
+	<select id="getUserNickname" parameterType="string" resultType="kr.co.ticketlink.user.domain.User">
+		SELECT 
+			id,
+		    password,
+		    name,
+		    nickname,
+		    email,
+		    phoneNumber,
+		    gender,
+		    level,
+		    emailReceiveYn,
+		    smsReceiveYn,
+		    provisionYn,
+		    emailCheckYn,
+		    emailCheckKey,
+		    registerDate,
+		    updateDate,
+		    secessionYn
+		FROM
+			USER
+		WHERE
+			nickname = #{nickname}
+	</select>
+	<insert id="insertUsersInfo" parameterType="kr.co.ticketlink.user.domain.User">
+		INSERT INTO USER(
+				id,
+				password,
+				name,
+				nickname,
+				email,
+				phoneNumber,
+				gender,
+				level,
+				emailReceiveYn,
+				smsReceiveYn,
+				provisionYn,
+				emailCheckYn,
+				emailCheckKey,
+				registerDate,
+				updateDate,
+				secessionYn
+			)VALUES(
+				#{id},
+				#{password},
+				#{name},
+				#{nickname},
+				#{email},
+				#{phoneNumber},
+				#{gender},
+				'00',
+				#{emailReceiveYn},
+				#{smsReceiveYn},
+				#{provisionYn},
+				'N',
+				#{emailCheckKey},
+				now(),
+				null,
+				'N'
+			)
+	</insert>
+	<insert id="insertAuthoritiesInfo" parameterType="kr.co.ticketlink.user.domain.User">
+		INSERT INTO AUTHORITIES (
+				id,
+				authority
+			) VALUES(
+				#{id},
+				'ROLE_USER'
+			)
+	</insert>
+</mapper>
